@@ -1,0 +1,157 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+" Map leader to space -------------------------------------------------------------------------------------------------
+let mapleader = "\<Space>"
+
+" Plugins -------------------------------------------------------------------------------------------------------------
+Plug 'machakann/vim-highlightedyank'                " Highlight copied text
+Plug 'tpope/vim-commentary'                         " Commentary plugin
+
+" Plugin settings -----------------------------------------------------------------------------------------------------
+
+" Common settings -----------------------------------------------------------------------------------------------------
+set scrolloff=5                                     " Show lines of context around the cursor
+set incsearch                                       " Incremental searching
+set ignorecase                                      " Ignore case when searching
+set hlsearch                                        " Highlight matches when searching
+set smartcase                                       " No ignore case when pattern is uppercase
+set showmodewidget                                  " Show vim mode widget
+set colorfulmodewidget                              " Use colorful vim mode widget
+set clipboard=unnamedplus,unnamed,ideaput           " Integrate with system clipboard
+
+" Custom bindings -----------------------------------------------------------------------------------------------------
+map Q gq                                            " Don't use Ex mode, use Q for formatting
+nmap <leader><Esc> :noh<CR>
+
+" Idea specific settings ----------------------------------------------------------------------------------------------
+set ideajoin                                        " Smart join for J
+
+" Mappings ------------------------------------------------------------------------------------------------------------
+nmap \rr <Action>(Run)
+vmap \rr <Action>(Run)
+
+" Debug
+nmap \rd <Action>(Debug)
+vmap \rd <Action>(Debug)
+nmap \b <Action>(ToggleLineBreakpoint)
+nmap \m <Action>(XDebugger.MuteBreakpoints)
+nmap \, <Action>(StepOver)
+nmap \. <Action>(StepInto)
+nmap \l <Action>(ShowExecutionPoint)
+nmap \e <Action>(EvaluateExpression)
+nmap \/ <Action>(Resume)
+nmap \a <Action>(AndroidConnectDebuggerAction)
+
+" Git
+nmap ]c <Action>(VcsShowNextChangeMarker)
+nmap [c <Action>(VcsShowPrevChangeMarker)
+nmap <leader>v <Action>(Vcs.QuickListPopupAction)
+vmap <leader>v <Action>(Vcs.QuickListPopupAction)
+nmap <leader>vb <Action>(Git.Branches)
+nmap <leader>vd <Action>(Compare.SameVersion)
+nmap <leader>vh <Action>(Vcs.ShowTabbedFileHistory)
+
+" Go to file
+nmap <leader>fb <Action>(RecentFiles)
+nmap <leader>fs <Action>(SearchEverywhere)
+nmap <leader>ff <Action>(GotoClass)
+nmap <leader>fa <Action>(GotoFile)
+
+" Go to method
+nmap <leader>g <Action>(GotoDeclaration)
+nmap <leader>i <Action>(GotoImplementation)
+nmap <leader>s <Action>(GotoSuperMethod)
+
+" Formatting & Refactor
+nmap <leader>fm <Action>(ReformatCode)
+vmap <leader>fm <Action>(ReformatCode)
+nmap <leader>rr <Action>(RenameElement)
+nmap <leader>rev <Action>(IntroduceVariable)
+vmap <leader>rev <Action>(IntroduceVariable)
+nmap <leader>rem <Action>(ExtractFunction)
+vmap <leader>rem <Action>(ExtractFunction)
+nmap <leader>rG <Action>(GenerateGroup)
+
+" Text selection
+vmap <leader>w <Action>(EditorSelectWord)
+vmap <leader>b <Action>(EditorUnSelectWord)
+
+" Text insertion
+nmap zj o<ESC>k
+nmap zk O<ESC>j
+
+" Text movement
+imap <C-h> <Left>
+imap <C-l> <Right>
+imap <C-j> <Down>
+imap <C-k> <Up>
+nmap <C-j> <Action>(MoveLineDown)
+xmap <C-j> <Action>(MoveLineDown)
+nmap <C-k> <Action>(MoveLineUp)
+xmap <C-k> <Action>(MoveLineUp)
+
+" Invert semantics for known keywords
+nnoremap ! :call Invert(0)<CR>
+vnoremap ! :<C-u>call Invert(1)<CR>
+
+" Tabs
+nmap <leader>tp <Action>(PinActiveTab)
+nmap <leader>to <Action>(ReopenClosedTab)
+nmap <tab> <Action>(NextTab)
+nmap <S-tab> <Action>(PreviousTab)
+nmap ]t <Action>(com.mnw.tabmover.actions.MoveTabDownAction)
+nmap [t <Action>(com.mnw.tabmover.actions.MoveTabUpAction)
+nmap <C-l> <Action>(NextSplitter)
+vmap <C-l> <Action>(NextSplitter)
+nmap <C-h> <Action>(PrevSplitter)
+vmap <C-h> <Action>(PrevSplitter)
+nmap <C-w>l <Action>(SplitVertically)
+nmap <C-w>j <Action>(SplitHorizontally)
+nmap <C-w>o <Action>(UnsplitAll)
+
+" Misc
+nmap <leader>d <Action>(QuickJavaDoc)
+nmap ]d <Action>(GotoNextError)
+nmap [d <Action>(GotoPreviousError)
+nnoremap <leader>* 0y$/\V<c-r>"<CR>
+nmap <leader>/ <Action>(CommentByLineComment)
+vmap <leader>/ <Action>(CommentByLineComment)
+
+" Diff
+nmap <leader>] <Action>(NextDiff)
+nmap <leader>[ <Action>(PreviousDiff)
+nmap <leader>} <Action>(Diff.NextChange)
+nmap <leader>{ <Action>(Diff.PrevChange)
+
+" Functions -----------------------------------------------------------------------------------------------------------
+function! Invert(calledFromVisual)
+  let antonyms = ['true', 'false',
+                 \'==', '!=',
+                 \'&&', '||',
+                 \'VERTICAL', 'HORIZONTAL',
+                 \'assertTrue', 'assertFalse',
+                 \'VISIBLE', 'GONE',
+                 \'visible', 'gone',
+                 \'val', 'var']
+
+  if a:calledFromVisual
+    normal gv"wy
+  else
+    normal "wyiw
+  endif
+  let wordUnderCaret = @w
+
+  let eraseWord = a:calledFromVisual ? 'gvc' : 'ciw'
+  let count = 0
+  while (count < len(antonyms))
+    if (antonyms[count] ==# wordUnderCaret)
+      let antonym = (count % 2 ==? 0) ? antonyms[count + 1] : antonyms[count - 1]
+      execute 'normal ' .. eraseWord .. antonym
+      break
+    endif
+    let count += 1
+  endwhile
+endfunction
