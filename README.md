@@ -4,7 +4,7 @@ My environment configuration.
 
 ## Prerequisites
 
-You need to have [Stow](https://www.gnu.org/software/stow/) installed on your machine.
+You need to have [GNU Stow](https://www.gnu.org/software/stow/) installed on your machine.
 
 ## Usage
 
