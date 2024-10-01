@@ -1,3 +1,5 @@
+alias v="nvim"
+
 # Update Homebrew packages
 alias brewery="brew update && brew upgrade && brew cleanup"
 
