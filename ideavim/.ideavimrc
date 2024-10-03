@@ -116,6 +116,9 @@ nmap <C-w>l <Action>(MoveTabRight)
 nmap <C-w>j <Action>(MoveTabDown)
 nmap <C-w>o <Action>(UnsplitAll)
 
+" ADB Idea
+nmap <leader>a <Action>(AdbIdea)
+
 " Misc
 nmap <leader>d <Action>(QuickJavaDoc)
 nmap ]d <Action>(GotoNextError)
