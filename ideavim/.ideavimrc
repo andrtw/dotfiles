@@ -116,6 +116,18 @@ nmap <C-w>l <Action>(MoveTabRight)
 nmap <C-w>j <Action>(MoveTabDown)
 nmap <C-w>o <Action>(UnsplitAll)
 
+" Harpoon
+nmap <leader>hh <Action>(ShowHarpoon)
+nmap <leader>ha <Action>(AddToHarpoon)
+nmap <C-h> <Action>(GotoHarpoon1)
+nmap <C-j> <Action>(GotoHarpoon2)
+nmap <C-k> <Action>(GotoHarpoon3)
+nmap <C-l> <Action>(GotoHarpoon4)
+nmap <leader><C-h> <Action>(SetHarpoon1)
+nmap <leader><C-j> <Action>(SetHarpoon2)
+nmap <leader><C-k> <Action>(SetHarpoon3)
+nmap <leader><C-l> <Action>(SetHarpoon4)
+
 " ADB Idea
 nmap <leader>a <Action>(AdbIdea)
 
