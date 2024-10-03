@@ -25,6 +25,7 @@ set clipboard=unnamedplus,unnamed,ideaput           " Integrate with system clip
 " Custom bindings -----------------------------------------------------------------------------------------------------
 map Q gq                                            " Don't use Ex mode, use Q for formatting
 nmap <leader><Esc> :noh<CR>
+nmap <leader>fd :e#<CR>
 
 " Idea specific settings ----------------------------------------------------------------------------------------------
 set ideajoin                                        " Smart join for J
@@ -53,6 +54,7 @@ vmap <leader>v <Action>(Vcs.QuickListPopupAction)
 nmap <leader>vb <Action>(Git.Branches)
 nmap <leader>vd <Action>(Compare.SameVersion)
 nmap <leader>vh <Action>(Vcs.ShowTabbedFileHistory)
+nmap <leader>vcb <Action>(Git.CompareWithBranch)
 
 " Go to file
 nmap <leader>fb <Action>(RecentFiles)
@@ -73,7 +75,11 @@ nmap <leader>rev <Action>(IntroduceVariable)
 vmap <leader>rev <Action>(IntroduceVariable)
 nmap <leader>rem <Action>(ExtractFunction)
 vmap <leader>rem <Action>(ExtractFunction)
-nmap <leader>rG <Action>(GenerateGroup)
+
+" Generate code
+nmap <leader>rg <Action>(GenerateGroup)
+nmap <leader>ri <Action>(ImplementMethods)
+nmap <leader>ro <Action>(OverrideMethods)
 
 " Text selection
 vmap <leader>w <Action>(EditorSelectWord)
@@ -88,10 +94,8 @@ imap <C-h> <Left>
 imap <C-l> <Right>
 imap <C-j> <Down>
 imap <C-k> <Up>
-nmap <C-j> <Action>(MoveLineDown)
-xmap <C-j> <Action>(MoveLineDown)
-nmap <C-k> <Action>(MoveLineUp)
-xmap <C-k> <Action>(MoveLineUp)
+vmap <C-j> <Action>(MoveLineDown)
+vmap <C-k> <Action>(MoveLineUp)
 
 " Invert semantics for known keywords
 nnoremap ! :call Invert(0)<CR>
@@ -108,8 +112,8 @@ nmap <C-l> <Action>(NextSplitter)
 vmap <C-l> <Action>(NextSplitter)
 nmap <C-h> <Action>(PrevSplitter)
 vmap <C-h> <Action>(PrevSplitter)
-nmap <C-w>l <Action>(SplitVertically)
-nmap <C-w>j <Action>(SplitHorizontally)
+nmap <C-w>l <Action>(MoveTabRight)
+nmap <C-w>j <Action>(MoveTabDown)
 nmap <C-w>o <Action>(UnsplitAll)
 
 " Misc
@@ -119,6 +123,7 @@ nmap [d <Action>(GotoPreviousError)
 nnoremap <leader>* 0y$/\V<c-r>"<CR>
 nmap <leader>/ <Action>(CommentByLineComment)
 vmap <leader>/ <Action>(CommentByLineComment)
+nmap <leader>x <Action>(CloseContent)
 
 " Diff
 nmap <leader>] <Action>(NextDiff)
