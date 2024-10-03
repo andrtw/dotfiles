@@ -24,8 +24,9 @@ set clipboard=unnamedplus,unnamed,ideaput           " Integrate with system clip
 
 " Custom bindings -----------------------------------------------------------------------------------------------------
 map Q gq                                            " Don't use Ex mode, use Q for formatting
-nmap <leader><Esc> :noh<CR>
-nmap <leader>fd :e#<CR>
+nmap <leader><Esc> :noh<CR>                         " Clear selection
+nmap <leader>fd :e#<CR>                             " Switch to last file used
+nnoremap <leader>* 0y$/\V<c-r>"<CR>                 " Search for the current line
 
 " Idea specific settings ----------------------------------------------------------------------------------------------
 set ideajoin                                        " Smart join for J
@@ -135,7 +136,6 @@ nmap <leader>a <Action>(AdbIdea)
 nmap <leader>d <Action>(QuickJavaDoc)
 nmap ]d <Action>(GotoNextError)
 nmap [d <Action>(GotoPreviousError)
-nnoremap <leader>* 0y$/\V<c-r>"<CR>
 nmap <leader>/ <Action>(CommentByLineComment)
 vmap <leader>/ <Action>(CommentByLineComment)
 nmap <leader>x <Action>(CloseContent)
