@@ -24,9 +24,9 @@ set clipboard=unnamedplus,unnamed,ideaput           " Integrate with system clip
 
 " Custom bindings -----------------------------------------------------------------------------------------------------
 map Q gq                                            " Don't use Ex mode, use Q for formatting
-nmap <leader><Esc> :noh<CR>                         " Clear selection
+nmap <leader><Esc> :noh<CR>
 nmap <leader>fd :e#<CR>                             " Switch to last file used
-nnoremap <leader>* 0y$/\V<c-r>"<CR>                 " Search for the current line
+nnoremap <leader>* 0y$/\V<c-r>"<CR>
 
 " Idea specific settings ----------------------------------------------------------------------------------------------
 set ideajoin                                        " Smart join for J
