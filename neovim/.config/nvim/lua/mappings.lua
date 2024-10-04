@@ -5,6 +5,7 @@ local nomap = vim.keymap.del
 local harpoon = require "harpoon"
 
 map("i", "jk", "<ESC>")
+map("n", "<leader>fd", "<cmd>e#<CR>", { desc = "toggle last used file" })
 nomap("n", "<leader>h")
 
 -- Harpoon
