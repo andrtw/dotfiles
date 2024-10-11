@@ -5,13 +5,23 @@
 local M = {}
 
 M.base46 = {
-  theme = "tokyonight",
+  theme = "onedark",
   transparency = true,
 
   -- hl_override = {
   -- 	Comment = { italic = true },
   -- 	["@comment"] = { italic = true },
   -- },
+}
+
+M.ui = {
+  statusline = {
+    separator_style = "block",
+  },
+}
+
+M.nvdash = {
+  load_on_startup = true,
 }
 
 return M
