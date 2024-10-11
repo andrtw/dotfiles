@@ -25,7 +25,7 @@ set clipboard=unnamedplus,unnamed,ideaput           " Integrate with system clip
 " Custom bindings -----------------------------------------------------------------------------------------------------
 map Q gq                                            " Don't use Ex mode, use Q for formatting
 nmap <leader><Esc> :noh<CR>
-nmap <leader>fd :e#<CR>                             " Switch to last file used
+nmap <leader>fd :e#<CR>
 nnoremap <leader>* 0y$/\V<c-r>"<CR>
 
 " Idea specific settings ----------------------------------------------------------------------------------------------
@@ -99,8 +99,8 @@ vmap <C-j> <Action>(MoveLineDown)
 vmap <C-k> <Action>(MoveLineUp)
 
 " Invert semantics for known keywords
-nnoremap ! :call Invert(0)<CR>
-vnoremap ! :<C-u>call Invert(1)<CR>
+nnoremap ! :call Invert(0)<CR><Esc>
+vnoremap ! :<C-u>call Invert(1)<CR><Esc>
 
 " Tabs
 nmap <leader>tp <Action>(PinActiveTab)
@@ -120,14 +120,14 @@ nmap <C-w>o <Action>(UnsplitAll)
 " Harpoon
 nmap <leader>hh <Action>(ShowHarpoon)
 nmap <leader>ha <Action>(AddToHarpoon)
-nmap <C-h> <Action>(GotoHarpoon1)
-nmap <C-j> <Action>(GotoHarpoon2)
-nmap <C-k> <Action>(GotoHarpoon3)
-nmap <C-l> <Action>(GotoHarpoon4)
-nmap <leader><C-h> <Action>(SetHarpoon1)
-nmap <leader><C-j> <Action>(SetHarpoon2)
-nmap <leader><C-k> <Action>(SetHarpoon3)
-nmap <leader><C-l> <Action>(SetHarpoon4)
+nmap <M-h> <Action>(GotoHarpoon1)
+nmap <M-j> <Action>(GotoHarpoon2)
+nmap <M-k> <Action>(GotoHarpoon3)
+nmap <M-l> <Action>(GotoHarpoon4)
+nmap <leader><M-h> <Action>(SetHarpoon1)
+nmap <leader><M-j> <Action>(SetHarpoon2)
+nmap <leader><M-k> <Action>(SetHarpoon3)
+nmap <leader><M-l> <Action>(SetHarpoon4)
 
 " ADB Idea
 nmap <leader>a <Action>(AdbIdea)
