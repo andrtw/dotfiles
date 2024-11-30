@@ -9,6 +9,9 @@ let mapleader = "\<Space>"
 " Plugins -------------------------------------------------------------------------------------------------------------
 Plug 'machakann/vim-highlightedyank'                " Highlight copied text
 Plug 'tpope/vim-commentary'                         " Commentary plugin
+Plug 'tpope/vim-surround'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'preservim/nerdtree'
 
 " Plugin settings -----------------------------------------------------------------------------------------------------
 
@@ -21,47 +24,45 @@ set smartcase                                       " No ignore case when patter
 set showmodewidget                                  " Show vim mode widget
 set colorfulmodewidget                              " Use colorful vim mode widget
 set clipboard=unnamedplus,unnamed,ideaput           " Integrate with system clipboard
+set idearefactormode=keep
 
 " Custom bindings -----------------------------------------------------------------------------------------------------
 map Q gq                                            " Don't use Ex mode, use Q for formatting
 nmap <leader><Esc> :noh<CR>
-nmap <leader>fd :e#<CR>
+nmap <leader>fd <C-6>
 nnoremap <leader>* 0y$/\V<c-r>"<CR>
 
 " Idea specific settings ----------------------------------------------------------------------------------------------
 set ideajoin                                        " Smart join for J
 
 " Mappings ------------------------------------------------------------------------------------------------------------
-nmap \rr <Action>(Run)
-vmap \rr <Action>(Run)
+nmap <leader>rr <Action>(Run)
 
 " Debug
-nmap \rd <Action>(Debug)
-vmap \rd <Action>(Debug)
-nmap \b <Action>(ToggleLineBreakpoint)
-nmap \m <Action>(XDebugger.MuteBreakpoints)
-nmap \, <Action>(StepOver)
-nmap \. <Action>(StepInto)
-nmap \l <Action>(ShowExecutionPoint)
-nmap \e <Action>(EvaluateExpression)
-nmap \/ <Action>(Resume)
-nmap \a <Action>(AndroidConnectDebuggerAction)
+nmap <leader>rd <Action>(Debug)
+nmap <leader>bb <Action>(ToggleLineBreakpoint)
+nmap <leader>bm <Action>(XDebugger.MuteBreakpoints)
+nmap <leader>bo <Action>(StepOver)
+nmap <leader>bi <Action>(StepInto)
+nmap <leader>bl <Action>(ShowExecutionPoint)
+nmap <leader>br <Action>(Resume)
+nmap <leader>ba <Action>(AndroidConnectDebuggerAction)
 
 " Git
-nmap ]c <Action>(VcsShowNextChangeMarker)
-nmap [c <Action>(VcsShowPrevChangeMarker)
 nmap <leader>v <Action>(Vcs.QuickListPopupAction)
 vmap <leader>v <Action>(Vcs.QuickListPopupAction)
 nmap <leader>vb <Action>(Git.Branches)
 nmap <leader>vd <Action>(Compare.SameVersion)
 nmap <leader>vh <Action>(Vcs.ShowTabbedFileHistory)
 nmap <leader>vcb <Action>(Git.CompareWithBranch)
+vmap <leader>vs <Action>(Vcs.ShowHistoryForBlock)
 
 " Go to file
 nmap <leader>fb <Action>(RecentFiles)
 nmap <leader>fs <Action>(SearchEverywhere)
 nmap <leader>ff <Action>(GotoClass)
 nmap <leader>fa <Action>(GotoFile)
+nmap <leader>ft <Action>(GotoTest)
 
 " Go to method
 nmap <leader>g <Action>(GotoDeclaration)
@@ -71,7 +72,9 @@ nmap <leader>s <Action>(GotoSuperMethod)
 " Formatting & Refactor
 nmap <leader>fm <Action>(ReformatCode)
 vmap <leader>fm <Action>(ReformatCode)
-nmap <leader>rr <Action>(RenameElement)
+nmap <leader>fl <Action>(IntentionActionAsAction_org.jetbrains.kotlin.idea.codeInsight.intentions.shared.ChopArgumentListIntention)
+nmap <leader>fn <Action>(IntentionActionAsAction_org.jetbrains.kotlin.idea.intentions.AddNamesToCallArgumentsIntention)
+nmap <leader>rf <Action>(RenameElement)
 nmap <leader>rev <Action>(IntroduceVariable)
 vmap <leader>rev <Action>(IntroduceVariable)
 nmap <leader>rem <Action>(ExtractFunction)
@@ -82,19 +85,15 @@ nmap <leader>rg <Action>(GenerateGroup)
 nmap <leader>ri <Action>(ImplementMethods)
 nmap <leader>ro <Action>(OverrideMethods)
 
-" Text selection
-vmap <leader>w <Action>(EditorSelectWord)
-vmap <leader>b <Action>(EditorUnSelectWord)
-
-" Text insertion
-nmap zj o<ESC>k
-nmap zk O<ESC>j
-
 " Text movement
 imap <C-h> <Left>
 imap <C-l> <Right>
 imap <C-j> <Down>
 imap <C-k> <Up>
+nmap zj 10<Down>
+nmap zk 10<Up>
+vmap zj 10<Down>
+vmap zk 10<Up>
 vmap <C-j> <Action>(MoveLineDown)
 vmap <C-k> <Action>(MoveLineUp)
 
@@ -105,16 +104,12 @@ vnoremap ! :<C-u>call Invert(1)<CR><Esc>
 " Tabs
 nmap <leader>tp <Action>(PinActiveTab)
 nmap <leader>to <Action>(ReopenClosedTab)
-nmap <tab> <Action>(NextTab)
-nmap <S-tab> <Action>(PreviousTab)
+nmap <tab> gt
+nmap <S-tab> gT
 nmap ]t <Action>(com.mnw.tabmover.actions.MoveTabDownAction)
 nmap [t <Action>(com.mnw.tabmover.actions.MoveTabUpAction)
-nmap <C-l> <Action>(NextSplitter)
-vmap <C-l> <Action>(NextSplitter)
-nmap <C-h> <Action>(PrevSplitter)
-vmap <C-h> <Action>(PrevSplitter)
-nmap <C-w>l <Action>(MoveTabRight)
-nmap <C-w>j <Action>(MoveTabDown)
+nmap <C-w>v <Action>(MoveTabRight)
+nmap <C-w>s <Action>(MoveTabDown)
 nmap <C-w>o <Action>(UnsplitAll)
 
 " Harpoon
@@ -141,10 +136,21 @@ vmap <leader>/ <Action>(CommentByLineComment)
 nmap <leader>x <Action>(CloseContent)
 
 " Diff
-nmap <leader>] <Action>(NextDiff)
-nmap <leader>[ <Action>(PreviousDiff)
-nmap <leader>} <Action>(Diff.NextChange)
-nmap <leader>{ <Action>(Diff.PrevChange)
+nmap ]] <Action>(NextDiff)
+nmap [[ <Action>(PreviousDiff)
+nmap <C-]> <Action>(Diff.NextChange)
+nmap <C-[> <Action>(Diff.PrevChange)
+nmap ]c <Action>(VcsShowNextChangeMarker)
+nmap [c <Action>(VcsShowPrevChangeMarker)<Esc>
+nmap =c <Action>(VcsShowCurrentChangeMarker)<Esc>
+
+" vim-multiple-cursors
+nmap <C-n> <Plug>NextOccurrence
+xmap <C-n> <Plug>NextOccurrence
+xmap <C-x> <Plug>SkipOccurrence
+xmap <C-p> <Plug>RemoveOccurrence
+nmap <leader><C-n> <Plug>AllOccurrences
+xmap <leader><C-n> <Plug>AllOccurrences
 
 " Functions -----------------------------------------------------------------------------------------------------------
 function! Invert(calledFromVisual)
