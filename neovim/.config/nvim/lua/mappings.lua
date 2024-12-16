@@ -34,3 +34,6 @@ end, { desc = "harpoon prev" })
 map("n", "<C-S-N>", function()
   harpoon:list():next()
 end, { desc = "harpoon next" })
+
+map("v", "J", ":m '>+1<CR>gv=gv")
+map("v", "K", ":m '<-2<CR>gv=gv")
