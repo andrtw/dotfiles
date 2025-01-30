@@ -17,4 +17,3 @@ quit-after-last-window-closed = true
 keybind = super+a=ignore
 keybind = super+q=ignore
 keybind = super+w=ignore
-# keybind = global:alt+shift+s=toggle_quick_terminal
