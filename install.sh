@@ -1,6 +1,6 @@
 stow zsh
 stow oh-my-zsh
 stow tmux
-stow neovim
+stow nvim
 stow ideavim
 stow ghostty
