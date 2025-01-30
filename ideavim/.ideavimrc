@@ -21,16 +21,16 @@ set incsearch                                       " Incremental searching
 set ignorecase                                      " Ignore case when searching
 set hlsearch                                        " Highlight matches when searching
 set smartcase                                       " No ignore case when pattern is uppercase
+set relativenumber                                  " Relative line numbers
 set showmodewidget                                  " Show vim mode widget
 set colorfulmodewidget                              " Use colorful vim mode widget
 set clipboard=unnamedplus,unnamed,ideaput           " Integrate with system clipboard
 set idearefactormode=keep
 
 " Custom bindings -----------------------------------------------------------------------------------------------------
-map Q gq                                            " Don't use Ex mode, use Q for formatting
-nmap <leader><Esc> :noh<CR>
+nmap <leader><Esc> :nohlsearch<CR>
 nmap <leader>fd <C-6>
-nnoremap <leader>* 0y$/\V<c-r>"<CR>
+nnoremap <leader>* 0y$/\V<C-r>"<CR>
 
 " Idea specific settings ----------------------------------------------------------------------------------------------
 set ideajoin                                        " Smart join for J
@@ -73,6 +73,7 @@ nmap <leader>s <Action>(GotoSuperMethod)
 nmap <leader>fm <Action>(ReformatCode)
 vmap <leader>fm <Action>(ReformatCode)
 nmap <leader>fl <Action>(IntentionActionAsAction_org.jetbrains.kotlin.idea.codeInsight.intentions.shared.ChopArgumentListIntention)
+nmap <leader>fL <Action>(IntentionActionAsAction_org.jetbrains.kotlin.idea.codeInsight.intentions.shared.ChopParameterListIntention)
 nmap <leader>fn <Action>(IntentionActionAsAction_org.jetbrains.kotlin.idea.intentions.AddNamesToCallArgumentsIntention)
 nmap <leader>rf <Action>(RenameElement)
 nmap <leader>rev <Action>(IntroduceVariable)
@@ -131,9 +132,8 @@ nmap <leader>a <Action>(AdbIdea)
 nmap <leader>d <Action>(QuickJavaDoc)
 nmap ]d <Action>(GotoNextError)
 nmap [d <Action>(GotoPreviousError)
-nmap <leader>/ <Action>(CommentByLineComment)
-vmap <leader>/ <Action>(CommentByLineComment)
 nmap <leader>x <Action>(CloseContent)
+nmap <leader>o <Action>(SelectInProjectView)
 
 " Diff
 nmap ]] <Action>(NextDiff)
