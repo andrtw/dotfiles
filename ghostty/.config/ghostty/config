@@ -1,0 +1,20 @@
+background-opacity = 0.92
+background-blur-radius = 20
+theme = dark:tokyonight,light:tokyonight-day
+
+font-size = 14
+
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = no-cursor
+
+macos-titlebar-proxy-icon = hidden
+macos-titlebar-style = tabs
+
+confirm-close-surface = true
+quit-after-last-window-closed = true
+
+keybind = super+a=ignore
+keybind = super+q=ignore
+keybind = super+w=ignore
+# keybind = global:alt+shift+s=toggle_quick_terminal
