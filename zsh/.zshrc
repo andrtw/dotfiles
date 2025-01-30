@@ -19,3 +19,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+
+# key bindinhs
+# ctrl + space to accept the current suggestion
+bindkey "^ " autosuggest-accept
