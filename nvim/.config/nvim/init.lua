@@ -225,6 +225,16 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
+-- Method signature & hover
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+  border = 'rounded',
+  silent = true,
+})
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = 'rounded',
+  silent = true,
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -604,6 +614,31 @@ require('lazy').setup({
               callback = function(event2)
                 vim.lsp.buf.clear_references()
                 vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
+              end,
+            })
+
+            local function check_triggeredChars(chars)
+              local cur_line = vim.api.nvim_get_current_line()
+              local pos = vim.api.nvim_win_get_cursor(0)[2]
+              local prev_char = cur_line:sub(pos - 1, pos - 1)
+              local cur_char = cur_line:sub(pos, pos)
+
+              for _, char in ipairs(chars) do
+                if cur_char == char or prev_char == char then
+                  return true
+                end
+              end
+            end
+
+            local group = vim.api.nvim_create_augroup('LspSignature', { clear = false })
+            local triggerChars = client.server_capabilities.signatureHelpProvider.triggerCharacters
+            vim.api.nvim_create_autocmd('TextChangedI', {
+              group = group,
+              buffer = event.buf,
+              callback = function()
+                if check_triggeredChars(triggerChars) then
+                  vim.lsp.buf.signature_help()
+                end
               end,
             })
           end
