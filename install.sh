@@ -5,3 +5,4 @@ stow nvim
 stow ideavim
 stow ghostty
 stow yazi
+stow aerospace
