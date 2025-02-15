@@ -630,17 +630,20 @@ require('lazy').setup({
               end
             end
 
-            local group = vim.api.nvim_create_augroup('LspSignature', { clear = false })
-            local triggerChars = client.server_capabilities.signatureHelpProvider.triggerCharacters
-            vim.api.nvim_create_autocmd('TextChangedI', {
-              group = group,
-              buffer = event.buf,
-              callback = function()
-                if check_triggeredChars(triggerChars) then
-                  vim.lsp.buf.signature_help()
-                end
-              end,
-            })
+            local signature_help_provider = client.server_capabilities.signatureHelpProvider or {}
+            if next(signature_help_provider) ~= nil then
+              local group = vim.api.nvim_create_augroup('LspSignature', { clear = false })
+              vim.api.nvim_create_autocmd('TextChangedI', {
+                group = group,
+                buffer = event.buf,
+                callback = function()
+                  local triggerChars = signature_help_provider.triggerCharacters
+                  if check_triggeredChars(triggerChars) then
+                    vim.lsp.buf.signature_help()
+                  end
+                end,
+              })
+            end
           end
 
           -- The following code creates a keymap to toggle inlay hints in your
