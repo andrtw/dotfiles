@@ -203,6 +203,9 @@ vim.keymap.set('i', '<C-l>', '<Right>', { desc = 'Move right' })
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 
+-- Save
+vim.keymap.set('n', '<C-s>', '<cmd>w<CR>')
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
