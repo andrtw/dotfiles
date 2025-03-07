@@ -229,10 +229,12 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
   border = 'rounded',
   silent = true,
+  focusable = false,
 })
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
   border = 'rounded',
   silent = true,
+  focusable = false,
 })
 
 -- [[ Install `lazy.nvim` plugin manager ]]
@@ -1014,7 +1016,19 @@ require('lazy').setup({
         --  the list of additional_vim_regex_highlighting and disabled languages for indent.
         additional_vim_regex_highlighting = { 'ruby' },
       },
-      indent = { enable = true, disable = { 'ruby' } },
+      indent = {
+        enable = true,
+        disable = { 'ruby' },
+      },
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = '<C-n>',
+          node_incremental = '<C-n>',
+          scope_incremental = '<C-s>',
+          node_decremental = '<C-m>',
+        },
+      },
     },
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
