@@ -29,7 +29,6 @@ set idearefactormode=keep
 
 " Custom bindings -----------------------------------------------------------------------------------------------------
 nmap <leader><Esc> :nohlsearch<CR>
-nmap <leader>fd <C-6>
 nnoremap <leader>* 0y$/\V<C-r>"<CR>
 
 " Idea specific settings ----------------------------------------------------------------------------------------------
@@ -40,42 +39,44 @@ nmap <leader>rr <Action>(Run)
 
 " Debug
 nmap <leader>rd <Action>(Debug)
-nmap <leader>bb <Action>(ToggleLineBreakpoint)
-nmap <leader>bm <Action>(XDebugger.MuteBreakpoints)
-nmap <leader>bo <Action>(StepOver)
-nmap <leader>bi <Action>(StepInto)
-nmap <leader>bl <Action>(ShowExecutionPoint)
-nmap <leader>br <Action>(Resume)
-nmap <leader>ba <Action>(AndroidConnectDebuggerAction)
+nmap <leader>da <Action>(ToggleLineBreakpoint)
+nmap <leader>dm <Action>(XDebugger.MuteBreakpoints)
+nmap <leader>do <Action>(StepOver)
+nmap <leader>di <Action>(StepInto)
+nmap <leader>dl <Action>(ShowExecutionPoint)
+nmap <leader>dr <Action>(Resume)
+nmap <leader>dd <Action>(AndroidConnectDebuggerAction)
 
 " Git
-nmap <leader>v <Action>(Vcs.QuickListPopupAction)
-vmap <leader>v <Action>(Vcs.QuickListPopupAction)
-nmap <leader>vb <Action>(Git.Branches)
-nmap <leader>vd <Action>(Compare.SameVersion)
-nmap <leader>vh <Action>(Vcs.ShowTabbedFileHistory)
-nmap <leader>vcb <Action>(Git.CompareWithBranch)
-vmap <leader>vs <Action>(Vcs.ShowHistoryForBlock)
+nmap <leader>ha <Action>(Vcs.QuickListPopupAction)
+vmap <leader>ha <Action>(Vcs.QuickListPopupAction)
+nmap <leader>hb <Action>(Git.Branches)
+nmap <leader>hd <Action>(Compare.SameVersion)
+nmap <leader>hD <Action>(Vcs.ShowTabbedFileHistory)
+nmap <leader>hB <Action>(Git.CompareWithBranch)
+vmap <leader>hs <Action>(Vcs.ShowHistoryForBlock)
+nmap <leader>hx <Action>(Annotate)
+nmap <leader>hp <Action>(Vcs.Push)
 
 " Go to file
-nmap <leader>fb <Action>(RecentFiles)
-nmap <leader>fs <Action>(SearchEverywhere)
-nmap <leader>ff <Action>(GotoClass)
-nmap <leader>fa <Action>(GotoFile)
-nmap <leader>ft <Action>(GotoTest)
+nmap <leader><leader> <Action>(RecentFiles)
+nmap <leader>ss <Action>(SearchEverywhere)
+nmap <leader>sc <Action>(GotoClass)
+nmap <leader>sf <Action>(GotoFile)
+nmap <leader>st <Action>(GotoTest)
+nmap <leader>s/ <Action>(FindInPath)
 
 " Go to method
-nmap <leader>g <Action>(GotoDeclaration)
-nmap <leader>i <Action>(GotoImplementation)
-nmap <leader>s <Action>(GotoSuperMethod)
+nmap gi <Action>(GotoImplementation)
+nmap gs <Action>(GotoSuperMethod)
 
 " Formatting & Refactor
-nmap <leader>fm <Action>(ReformatCode)
-vmap <leader>fm <Action>(ReformatCode)
-nmap <leader>fl <Action>(IntentionActionAsAction_org.jetbrains.kotlin.idea.codeInsight.intentions.shared.ChopArgumentListIntention)
-nmap <leader>fL <Action>(IntentionActionAsAction_org.jetbrains.kotlin.idea.codeInsight.intentions.shared.ChopParameterListIntention)
-nmap <leader>fn <Action>(IntentionActionAsAction_org.jetbrains.kotlin.idea.intentions.AddNamesToCallArgumentsIntention)
-nmap <leader>rf <Action>(RenameElement)
+nmap <leader>f <Action>(ReformatCode)
+vmap <leader>f <Action>(ReformatCode)
+nmap <leader>rel <Action>(IntentionActionAsAction_org.jetbrains.kotlin.idea.codeInsight.intentions.shared.ChopArgumentListIntention)
+nmap <leader>reL <Action>(IntentionActionAsAction_org.jetbrains.kotlin.idea.codeInsight.intentions.shared.ChopParameterListIntention)
+nmap <leader>ren <Action>(IntentionActionAsAction_org.jetbrains.kotlin.idea.k2.codeinsight.intentions.AddNamesToCallArgumentsIntention)
+nmap <leader>rn <Action>(RenameElement)
 nmap <leader>rev <Action>(IntroduceVariable)
 vmap <leader>rev <Action>(IntroduceVariable)
 nmap <leader>rem <Action>(ExtractFunction)
@@ -91,12 +92,8 @@ imap <C-h> <Left>
 imap <C-l> <Right>
 imap <C-j> <Down>
 imap <C-k> <Up>
-nmap zj 10<Down>
-nmap zk 10<Up>
-vmap zj 10<Down>
-vmap zk 10<Up>
-vmap <C-j> <Action>(MoveLineDown)
-vmap <C-k> <Action>(MoveLineUp)
+vmap J <Action>(MoveLineDown)
+vmap K <Action>(MoveLineUp)
 
 " Invert semantics for known keywords
 nnoremap ! :call Invert(0)<CR><Esc>
@@ -109,40 +106,36 @@ nmap <tab> gt
 nmap <S-tab> gT
 nmap ]t <Action>(com.mnw.tabmover.actions.MoveTabDownAction)
 nmap [t <Action>(com.mnw.tabmover.actions.MoveTabUpAction)
-nmap <C-w>v <Action>(MoveTabRight)
-nmap <C-w>s <Action>(MoveTabDown)
-nmap <C-w>o <Action>(UnsplitAll)
 
 " Harpoon
-nmap <leader>hh <Action>(ShowHarpoon)
-nmap <leader>ha <Action>(AddToHarpoon)
-nmap <M-h> <Action>(GotoHarpoon1)
-nmap <M-j> <Action>(GotoHarpoon2)
-nmap <M-k> <Action>(GotoHarpoon3)
-nmap <M-l> <Action>(GotoHarpoon4)
-nmap <leader><M-h> <Action>(SetHarpoon1)
-nmap <leader><M-j> <Action>(SetHarpoon2)
-nmap <leader><M-k> <Action>(SetHarpoon3)
-nmap <leader><M-l> <Action>(SetHarpoon4)
+" nmap <leader>hh <Action>(ShowHarpoon)
+" nmap <leader>ha <Action>(AddToHarpoon)
+" nmap <M-h> <Action>(GotoHarpoon1)
+" nmap <M-j> <Action>(GotoHarpoon2)
+" nmap <M-k> <Action>(GotoHarpoon3)
+" nmap <M-l> <Action>(GotoHarpoon4)
+" nmap <leader><M-h> <Action>(SetHarpoon1)
+" nmap <leader><M-j> <Action>(SetHarpoon2)
+" nmap <leader><M-k> <Action>(SetHarpoon3)
+" nmap <leader><M-l> <Action>(SetHarpoon4)
 
 " ADB Idea
 nmap <leader>a <Action>(AdbIdea)
 
 " Misc
-nmap <leader>d <Action>(QuickJavaDoc)
 nmap ]d <Action>(GotoNextError)
 nmap [d <Action>(GotoPreviousError)
 nmap <leader>x <Action>(CloseContent)
 nmap <leader>o <Action>(SelectInProjectView)
+nmap \ :NERDTreeToggle<CR>
 
 " Diff
 nmap ]] <Action>(NextDiff)
 nmap [[ <Action>(PreviousDiff)
 nmap <C-]> <Action>(Diff.NextChange)
 nmap <C-[> <Action>(Diff.PrevChange)
-nmap ]c <Action>(VcsShowNextChangeMarker)
+nmap ]c <Action>(VcsShowNextChangeMarker)<Esc>
 nmap [c <Action>(VcsShowPrevChangeMarker)<Esc>
-nmap =c <Action>(VcsShowCurrentChangeMarker)<Esc>
 
 " vim-multiple-cursors
 nmap <C-n> <Plug>NextOccurrence
