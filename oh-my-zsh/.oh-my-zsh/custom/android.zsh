@@ -1,3 +1,5 @@
+alias adb_uninstall='adb uninstall $(adb shell pm list packages | fzf | sed "s/package://")'
+
 # Turn on/off mobile data
 function adbdata() {
   if [[ $1 == "on" ]]; then
@@ -33,6 +35,7 @@ function adbtaps() {
 #   - sets the clock to always be 9:00
 #   - sets wi-fi and mobile data to the maximum signal
 #   - sets the battery as not charging and 100%
+#   - shows taps
 #
 # Useful for live demos and screenshots
 function adbdemo() {
@@ -43,8 +46,10 @@ function adbdemo() {
     adb shell am broadcast -a com.android.systemui.demo -e command network -e mobile show -e datatype none -e level 4
     adb shell am broadcast -a com.android.systemui.demo -e command battery -e plugged false -e level 100
     adb shell am broadcast -a com.android.systemui.demo -e command notifications -e visible false
+    adbtaps on
   else
     adb shell am broadcast -a com.android.systemui.demo -e command exit
+    adbtaps off
   fi
 }
 
