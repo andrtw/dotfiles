@@ -1,4 +1,5 @@
 alias v="nvim"
+alias py="python3"
 
 # Update Homebrew packages
 alias brewery="brew update && brew upgrade && brew cleanup"
