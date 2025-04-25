@@ -1,6 +1,6 @@
 # dotfiles
 
-My environment configuration.
+My dot files.
 
 ## Prerequisites
 
