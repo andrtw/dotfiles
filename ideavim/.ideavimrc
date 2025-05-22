@@ -7,11 +7,12 @@
 let mapleader = "\<Space>"
 
 " Plugins -------------------------------------------------------------------------------------------------------------
-Plug 'machakann/vim-highlightedyank'                " Highlight copied text
-Plug 'tpope/vim-commentary'                         " Commentary plugin
-Plug 'tpope/vim-surround'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'preservim/nerdtree'
+set highlightedyank
+set commentary
+set surround
+set multiple-cursors
+set NERDTree
+set mini-ai
 
 " Plugin settings -----------------------------------------------------------------------------------------------------
 
@@ -36,6 +37,7 @@ set ideajoin                                        " Smart join for J
 
 " Mappings ------------------------------------------------------------------------------------------------------------
 nmap <leader>rr <Action>(Run)
+nmap <leader>rt <Action>(RunClass)
 
 " Debug
 nmap <leader>rd <Action>(Debug)
@@ -46,15 +48,16 @@ nmap <leader>di <Action>(StepInto)
 nmap <leader>dl <Action>(ShowExecutionPoint)
 nmap <leader>dr <Action>(Resume)
 nmap <leader>dd <Action>(AndroidConnectDebuggerAction)
+nmap <leader>dv <Action>(QuickEvaluateExpression)
 
 " Git
 nmap <leader>ha <Action>(Vcs.QuickListPopupAction)
 vmap <leader>ha <Action>(Vcs.QuickListPopupAction)
 nmap <leader>hb <Action>(Git.Branches)
 nmap <leader>hd <Action>(Compare.SameVersion)
+vmap <leader>hd <Action>(Vcs.ShowHistoryForBlock)
 nmap <leader>hD <Action>(Vcs.ShowTabbedFileHistory)
 nmap <leader>hB <Action>(Git.CompareWithBranch)
-vmap <leader>hs <Action>(Vcs.ShowHistoryForBlock)
 nmap <leader>hx <Action>(Annotate)
 nmap <leader>hp <Action>(Vcs.Push)
 
@@ -108,16 +111,16 @@ nmap ]t <Action>(com.mnw.tabmover.actions.MoveTabDownAction)
 nmap [t <Action>(com.mnw.tabmover.actions.MoveTabUpAction)
 
 " Harpoon
-" nmap <leader>hh <Action>(ShowHarpoon)
-" nmap <leader>ha <Action>(AddToHarpoon)
-" nmap <M-h> <Action>(GotoHarpoon1)
-" nmap <M-j> <Action>(GotoHarpoon2)
-" nmap <M-k> <Action>(GotoHarpoon3)
-" nmap <M-l> <Action>(GotoHarpoon4)
-" nmap <leader><M-h> <Action>(SetHarpoon1)
-" nmap <leader><M-j> <Action>(SetHarpoon2)
-" nmap <leader><M-k> <Action>(SetHarpoon3)
-" nmap <leader><M-l> <Action>(SetHarpoon4)
+nmap <leader>hh <Action>(ShowHarpoon)
+nmap <leader>ha <Action>(AddToHarpoon)
+nmap <C-h> <Action>(GotoHarpoon1)
+nmap <C-j> <Action>(GotoHarpoon2)
+nmap <C-k> <Action>(GotoHarpoon3)
+nmap <C-l> <Action>(GotoHarpoon4)
+nmap <leader><C-h> <Action>(SetHarpoon1)
+nmap <leader><C-j> <Action>(SetHarpoon2)
+nmap <leader><C-k> <Action>(SetHarpoon3)
+nmap <leader><C-l> <Action>(SetHarpoon4)
 
 " ADB Idea
 nmap <leader>a <Action>(AdbIdea)
@@ -127,7 +130,7 @@ nmap ]d <Action>(GotoNextError)
 nmap [d <Action>(GotoPreviousError)
 nmap <leader>x <Action>(CloseContent)
 nmap <leader>o <Action>(SelectInProjectView)
-nmap \ :NERDTreeToggle<CR>
+nmap \ :NERDTreeFocus<CR>
 
 " Diff
 nmap ]] <Action>(NextDiff)
