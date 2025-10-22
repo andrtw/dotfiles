@@ -1,0 +1,28 @@
+// Settings in here override those in "Default/Preferences.sublime-settings",
+// and are overridden in turn by syntax-specific settings.
+{
+  "always_show_minimap_viewport": true,
+  "detect_indentation": false,
+  "font_size": 14,
+  "shift_tab_unindent": true,
+  "tab_size": 2,
+  "translate_tabs_to_spaces": true,
+  "ignored_packages":
+  [
+    "Vintage",
+  ],
+  "theme": "auto",
+  "color_scheme": "auto",
+  "caret_style": "phase",
+  "caret_extra_top": 0,
+  "caret_extra_bottom": 0,
+  "trim_trailing_white_space_on_save": "all",
+  "ensure_newline_at_eof_on_save": true,
+  "find_selected_text": true,
+  "remember_workspace": false,
+  "index_files": false,
+  "dark_theme": "Adaptive.sublime-theme",
+  "light_theme": "Adaptive.sublime-theme",
+  "dark_color_scheme": "Packages/User/tokyonight_night.tmTheme",
+  "light_color_scheme": "Packages/User/tokyonight_day.tmTheme",
+}
