@@ -38,6 +38,7 @@ set ideajoin                                        " Smart join for J
 " Mappings ------------------------------------------------------------------------------------------------------------
 nmap <leader>rr <Action>(Run)
 nmap <leader>rt <Action>(RunClass)
+nmap <leader>rs <Action>(RedesignedRunConfigurationSelector)
 
 " Debug
 nmap <leader>rd <Action>(Debug)
@@ -110,6 +111,18 @@ nmap <S-tab> gT
 nmap ]t <Action>(com.mnw.tabmover.actions.MoveTabDownAction)
 nmap [t <Action>(com.mnw.tabmover.actions.MoveTabUpAction)
 
+" Windows
+nmap <C-w>< <Action>(TabShiftActions.StretchLeft)
+nmap <C-w>> <Action>(TabShiftActions.StretchRight)
+nmap <C-w>- <Action>(TabShiftActions.StretchDown)
+nmap <C-w>+ <Action>(TabShiftActions.StretchUp)
+nmap <C-w>H <Action>(TabShiftActions.ShiftLeft)
+nmap <C-w>L <Action>(TabShiftActions.ShiftRight)
+nmap <C-w>K <Action>(TabShiftActions.ShiftUp)
+nmap <C-w>J <Action>(TabShiftActions.ShiftDown)
+nmap <C-w>= <Action>(tabshifter.Actions.EqualSizeSplit)
+nmap <C-w>_ <Action>(TabShiftActions.ToggleMaximizeRestore)
+
 " Harpoon
 nmap <leader>hh <Action>(ShowHarpoon)
 nmap <leader>ha <Action>(AddToHarpoon)
@@ -128,9 +141,11 @@ nmap <leader>a <Action>(AdbIdea)
 " Misc
 nmap ]d <Action>(GotoNextError)
 nmap [d <Action>(GotoPreviousError)
+nmap <leader>q <Action>(ActivateProblemsViewToolWindow)
 nmap <leader>x <Action>(CloseContent)
 nmap <leader>o <Action>(SelectInProjectView)
-nmap \ :NERDTreeFocus<CR>
+nmap <leader>e :NERDTreeFocus<CR>
+nmap <leader>u <Action>(FindUsages)
 
 " Diff
 nmap ]] <Action>(NextDiff)
@@ -157,7 +172,10 @@ function! Invert(calledFromVisual)
                  \'assertTrue', 'assertFalse',
                  \'VISIBLE', 'GONE',
                  \'visible', 'gone',
-                 \'val', 'var']
+                 \'val', 'var',
+                 \'every', 'coEvery',
+                 \'verify', 'coVerify',
+                 \'disabled', 'enabled']
 
   if a:calledFromVisual
     normal gv"wy
