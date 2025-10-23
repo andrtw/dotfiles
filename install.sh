@@ -7,3 +7,4 @@ stow ghostty
 stow yazi
 stow aerospace
 stow sublime-text
+stow bat
