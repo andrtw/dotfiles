@@ -9,3 +9,4 @@ stow aerospace
 stow sublime-text
 stow bat
 stow fzf
+stow delta

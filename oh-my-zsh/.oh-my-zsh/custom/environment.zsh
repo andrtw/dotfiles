@@ -1,7 +1,8 @@
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
 
-export EDITOR="nvim"
+export EDITOR='nvim'
+export PAGER='delta'
 export JAVA_HOME="$(/usr/libexec/java_home)"
 export ANDROID_HOME="$HOME/Library/Android/sdk"
 
