@@ -1,6 +1,6 @@
 background-opacity = 0.90
 background-blur-radius = 20
-theme = dark:tokyonight,light:tokyonight-day
+theme = dark:tokyonight night,light:tokyonight day
 
 font-size = 14
 
