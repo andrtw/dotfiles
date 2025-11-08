@@ -4,6 +4,19 @@ return {
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help ibl`
     main = 'ibl',
-    opts = {},
+    init = function()
+      -- Disable indentation on the first level
+      local hooks = require 'ibl.hooks'
+      hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
+      hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_tab_indent_level)
+    end,
+    opts = {
+      indent = {
+        char = '▏',
+      },
+      scope = {
+        enabled = false,
+      },
+    },
   },
 }
