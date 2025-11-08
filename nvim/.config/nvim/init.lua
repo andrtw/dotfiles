@@ -997,6 +997,20 @@ require('lazy').setup({
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
 
+      -- Navigate and manipulate file system
+      local files = require 'mini.files'
+      vim.keymap.set('n', '<leader>e', function()
+        files.open(vim.uv.cwd(), true)
+      end, { desc = 'Open mini.files (cwd)' })
+      vim.keymap.set('n', '<leader>E', function()
+        files.open(vim.api.nvim_buf_get_name(0), true)
+      end, { desc = 'Open mini.files (Directory of Current File)' })
+      files.setup {
+        mappings = {
+          close = '<esc>',
+        },
+      }
+
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin
