@@ -166,6 +166,9 @@ vim.o.scrolloff = 6
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
+-- Default border style of floating windows
+vim.o.winborder = 'rounded'
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
