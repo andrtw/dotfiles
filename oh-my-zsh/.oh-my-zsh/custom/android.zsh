@@ -1,6 +1,6 @@
-alias adb_uninstall='adb uninstall $(adb shell pm list packages | fzf | sed "s/package://")'
-alias adb_packages='adb shell pm list packages | fzf'
-alias adb_clear='adb shell pm clear $(adb shell pm list packages | fzf | sed "s/package://")'
+alias adbuninstall='adb uninstall $(adb shell pm list packages | fzf | sed "s/package://")'
+alias adbpackages='adb shell pm list packages | fzf'
+alias adbclear='adb shell pm clear $(adb shell pm list packages | fzf | sed "s/package://")'
 
 # Turn on/off mobile data
 function adbdata() {
