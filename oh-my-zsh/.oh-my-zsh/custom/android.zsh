@@ -2,6 +2,17 @@ alias adbuninstall='adb uninstall $(adb shell pm list packages | fzf | sed "s/pa
 alias adbpackages='adb shell pm list packages | fzf'
 alias adbclear='adb shell pm clear $(adb shell pm list packages | fzf | sed "s/package://")'
 
+# Open the module's strings.xml, optionally 
+function str() {
+  locale=$1
+  if [[ -n $locale ]]; then
+    values="values-$locale"
+  else
+    values="values"
+  fi
+  ${VISUAL-${EDITOR-nano}} src/main/res/$values/strings.xml
+}
+
 # Turn on/off mobile data
 function adbdata() {
   if [[ $1 == "on" ]]; then
