@@ -1,5 +1,4 @@
 alias v="nvim"
-alias py="python3"
 alias :q="exit"
 
 # Update Homebrew packages
