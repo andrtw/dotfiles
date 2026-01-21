@@ -68,7 +68,7 @@ nmap <leader>ss <Action>(SearchEverywhere)
 nmap <leader>sc <Action>(GotoClass)
 nmap <leader>sf <Action>(GotoFile)
 nmap <leader>st <Action>(GotoTest)
-nmap <leader>s/ <Action>(FindInPath)
+nmap <leader>sg <Action>(FindInPath)
 
 " Go to method
 nmap gi <Action>(GotoImplementation)
@@ -80,7 +80,7 @@ vmap <leader>f <Action>(ReformatCode)
 nmap <leader>rel <Action>(IntentionActionAsAction_org.jetbrains.kotlin.idea.codeInsight.intentions.shared.ChopArgumentListIntention)
 nmap <leader>reL <Action>(IntentionActionAsAction_org.jetbrains.kotlin.idea.codeInsight.intentions.shared.ChopParameterListIntention)
 nmap <leader>ren <Action>(IntentionActionAsAction_org.jetbrains.kotlin.idea.k2.codeinsight.intentions.AddNamesToCallArgumentsIntention)
-nmap <leader>rn <Action>(RenameElement)
+nmap grn <Action>(RenameElement)
 nmap <leader>rev <Action>(IntroduceVariable)
 vmap <leader>rev <Action>(IntroduceVariable)
 nmap <leader>rem <Action>(ExtractFunction)
@@ -104,12 +104,12 @@ nnoremap ! :call Invert(0)<CR><Esc>
 vnoremap ! :<C-u>call Invert(1)<CR><Esc>
 
 " Tabs
-nmap <leader>tp <Action>(PinActiveTab)
-nmap <leader>to <Action>(ReopenClosedTab)
-nmap <tab> gt
-nmap <S-tab> gT
-nmap ]t <Action>(com.mnw.tabmover.actions.MoveTabDownAction)
-nmap [t <Action>(com.mnw.tabmover.actions.MoveTabUpAction)
+" nmap <leader>tp <Action>(PinActiveTab)
+" nmap <leader>to <Action>(ReopenClosedTab)
+" nmap <tab> gt
+" nmap <S-tab> gT
+"nmap ]t <Action>(com.mnw.tabmover.actions.MoveTabDownAction)
+"nmap [t <Action>(com.mnw.tabmover.actions.MoveTabUpAction)
 
 " Windows
 nmap <C-w>< <Action>(TabShiftActions.StretchLeft)
@@ -143,7 +143,7 @@ nmap ]d <Action>(GotoNextError)
 nmap [d <Action>(GotoPreviousError)
 nmap <leader>q <Action>(ActivateProblemsViewToolWindow)
 nmap <leader>x <Action>(CloseContent)
-nmap <leader>o <Action>(SelectInProjectView)
+nmap <leader>E <Action>(SelectInProjectView)
 nmap <leader>e :NERDTreeFocus<CR>
 nmap <leader>u <Action>(FindUsages)
 
@@ -152,8 +152,8 @@ nmap ]] <Action>(NextDiff)
 nmap [[ <Action>(PreviousDiff)
 nmap <C-]> <Action>(Diff.NextChange)
 nmap <C-[> <Action>(Diff.PrevChange)
-nmap ]c <Action>(VcsShowNextChangeMarker)<Esc>
-nmap [c <Action>(VcsShowPrevChangeMarker)<Esc>
+nmap ]h <Action>(VcsShowNextChangeMarker)<Esc>
+nmap [h <Action>(VcsShowPrevChangeMarker)<Esc>
 
 " vim-multiple-cursors
 nmap <C-n> <Plug>NextOccurrence
