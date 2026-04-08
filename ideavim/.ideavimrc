@@ -2,6 +2,20 @@
 "   the same commands as the original .vimrc configuration.
 " You can find a list of commands here: https://jb.gg/h38q75
 " Find more examples here: https://jb.gg/share-ideavimrc
+"
+" Mode widget light colours:
+" Normal #457BE2
+" Insert #5E7440
+" Replace #E14167
+" Command #876D45
+" Visual #8F57E9
+"
+" Mode widget dark colours:
+" Normal #82A1F1
+" Insert #A8CD76
+" Replace #E77D8F
+" Command #D8B173
+" Visual #B69BF1
 
 " Map leader to space -------------------------------------------------------------------------------------------------
 let mapleader = "\<Space>"
