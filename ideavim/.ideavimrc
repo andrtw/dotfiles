@@ -108,8 +108,8 @@ vnoremap ! :<C-u>call Invert(1)<CR><Esc>
 " nmap <leader>to <Action>(ReopenClosedTab)
 " nmap <tab> gt
 " nmap <S-tab> gT
-"nmap ]t <Action>(com.mnw.tabmover.actions.MoveTabDownAction)
-"nmap [t <Action>(com.mnw.tabmover.actions.MoveTabUpAction)
+" nmap ]t <Action>(com.mnw.tabmover.actions.MoveTabDownAction)
+" nmap [t <Action>(com.mnw.tabmover.actions.MoveTabUpAction)
 
 " Windows
 nmap <C-w>< <Action>(TabShiftActions.StretchLeft)
@@ -142,7 +142,6 @@ nmap <leader>a <Action>(AdbIdea)
 nmap ]d <Action>(GotoNextError)
 nmap [d <Action>(GotoPreviousError)
 nmap <leader>q <Action>(ActivateProblemsViewToolWindow)
-nmap <leader>x <Action>(CloseContent)
 nmap <leader>E <Action>(SelectInProjectView)
 nmap <leader>e :NERDTreeFocus<CR>
 nmap <leader>u <Action>(FindUsages)
