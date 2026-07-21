@@ -18,7 +18,7 @@ quit-after-last-window-closed = true
 quick-terminal-position = center
 quick-terminal-size = 75%,75%
 quick-terminal-animation-duration = 0
-quick-terminal-autohide = false
+quick-terminal-autohide = true
 
 keybind = super+a=ignore
 keybind = super+q=ignore
