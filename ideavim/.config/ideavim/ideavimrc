@@ -165,8 +165,8 @@ nmap ]] <Action>(NextDiff)
 nmap [[ <Action>(PreviousDiff)
 nmap <C-]> <Action>(Diff.NextChange)
 nmap <C-[> <Action>(Diff.PrevChange)
-nmap ]h <Action>(VcsShowNextChangeMarker)<Esc>
-nmap [h <Action>(VcsShowPrevChangeMarker)<Esc>
+nmap ]c <Action>(VcsShowNextChangeMarker)
+nmap [c <Action>(VcsShowPrevChangeMarker)
 
 " vim-multiple-cursors
 nmap <C-n> <Plug>NextOccurrence
