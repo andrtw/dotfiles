@@ -83,6 +83,8 @@ nmap <leader>sc <Action>(GotoClass)
 nmap <leader>sf <Action>(GotoFile)
 nmap <leader>st <Action>(GotoTest)
 nmap <leader>sg <Action>(FindInPath)
+nmap <leader>sw yiw<Action>(FindInPath)
+nmap <leader>sb yib<Action>(FindInPath)
 
 " Go to method
 nmap gi <Action>(GotoImplementation)
