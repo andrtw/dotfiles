@@ -6,6 +6,7 @@ export PAGER='delta'
 export JAVA_HOME="$(/usr/libexec/java_home)"
 export ANDROID_HOME="$HOME/Library/Android/sdk"
 
+path+="$HOME/.local/bin"
 path+=$ANDROID_HOME/emulator
 path+=$ANDROID_HOME/tools
 path+=$ANDROID_HOME/platform-tools
