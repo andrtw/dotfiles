@@ -10,3 +10,4 @@ stow sublime-text
 stow bat
 stow fzf
 stow delta
+stow mpv
