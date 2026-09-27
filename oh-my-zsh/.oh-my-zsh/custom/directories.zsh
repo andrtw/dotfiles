@@ -2,6 +2,8 @@ alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias prj="cd ~/Projects"
 alias dot="cd ~/.dotfiles"
+alias screenshots_out="yazi build/outputs/screenshots"
+alias screenshots="yazi src/test/screenshots"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`

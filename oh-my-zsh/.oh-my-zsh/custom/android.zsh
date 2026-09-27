@@ -1,6 +1,7 @@
 alias adbuninstall='adb uninstall $(adb shell pm list packages | fzf | sed "s/package://")'
 alias adbpackages='adb shell pm list packages | fzf'
 alias adbclear='adb shell pm clear $(adb shell pm list packages | fzf | sed "s/package://")'
+alias adbdevices='adb devices | tail -n +2 | fzf'
 
 # Open the module's strings.xml
 function str() {

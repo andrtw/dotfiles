@@ -16,6 +16,9 @@ alias egrep='egrep --color=auto'
 # Get week number
 alias week='date +%V'
 
+# Update installed Ruby gems, Homebrew, npm, and their installed packages
+alias update='brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup'
+
 # Flush Directory Service cache
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
 
